@@ -22,6 +22,15 @@ class Diver {
         );
     }
 
+    create({ first_name, last_name, is_instructor, certification_id }) {
+        return db.query(
+            `INSERT INTO divers (first_name, last_name, is_instructor, certification_id)
+          VALUES ($1, $2, $3, $4)
+          RETURNING *`,
+            [first_name, last_name, is_instructor, certification_id]
+        );
+    }
+
 }
 
 
